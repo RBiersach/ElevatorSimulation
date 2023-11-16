@@ -1,28 +1,41 @@
 package com.example.elevatorsimulation;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.stage.FileChooser;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import javafx.geometry.Insets;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
-import java.util.Scanner;
+import java.io.IOException;
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        FileChooser fileChooser = new FileChooser();
-        File selectedFile = fileChooser.showOpenDialog(null);
+    private GridPane gridContainer;
 
-        if (selectedFile != null) {
-            ElevatorSimulation _simulation = new ElevatorSimulation();
-            _simulation.initSimulaton(selectedFile.getAbsolutePath());
+    @FXML
+    protected void onHelloButtonClick() throws IOException {
 
+        int column = 0;
+        int row = 1;
+
+        SimulationSettings sm = new SimulationSettings();
+        FileManipulator fm = new FileManipulator();
+        sm = fm.readSettingsInformation("settings.txt");
+        System.out.println(sm.toString());
+
+        ElevatorSimulation simulation = new ElevatorSimulation();
+        simulation.initSimulaton(sm);
+        int count = 0;
+        for (int j = 0; j < sm.floors; j++) {
+            for (int i = 0; i < sm.number_of_elevators; i++) {
+                gridContainer.add(new Text(Integer.toString(count) + "  "), i, j);
+                count++;
+
+            }
 
         }
+
     }
 }
