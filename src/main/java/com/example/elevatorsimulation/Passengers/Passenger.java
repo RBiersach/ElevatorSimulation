@@ -10,5 +10,9 @@ public abstract class Passenger {
 
     public abstract boolean requestElevator(direction _direction, SimulationSettings _simulationSettings);
 
+    public int getEndFloor() {
+        return endFloor;
+    }
+
 
 }

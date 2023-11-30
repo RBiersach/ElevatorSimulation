@@ -21,16 +21,20 @@ public class HelloController {
         int row = 1;
 
         SimulationSettings sm = new SimulationSettings();
+
         FileManipulator fm = new FileManipulator();
         sm = fm.readSettingsInformation("settings.txt");
         System.out.println(sm.toString());
 
+
         ElevatorSimulation simulation = new ElevatorSimulation();
         simulation.initSimulaton(sm);
+        simulation.runSimulation(sm);
+
         int count = 0;
         for (int j = 0; j < sm.floors; j++) {
             for (int i = 0; i < sm.number_of_elevators; i++) {
-                gridContainer.add(new Text(Integer.toString(count) + "  "), i, j);
+                gridContainer.add(new Text(count + "  "), i, j);
                 count++;
 
             }

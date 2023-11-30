@@ -1,12 +1,30 @@
 package com.example.elevatorsimulation.Elevators;
 
+import com.example.elevatorsimulation.SimulationSettings;
+
 public class ExpressElevator extends Elevator {
 
-    public boolean move(direction _direction) {
+    public boolean move(SimulationSettings _sm) {
         if (_direction == direction.UP) {
-            return true;
+            if (currentFloor < _sm.getFloors()) {
+                this.currentFloor = currentFloor + 1;
+                _direction = direction.UP;
+                return true;
+            } else {
+                _direction = direction.DOWN;
+                this.currentFloor = currentFloor - 1;
+                return true;
+            }
         } else if (_direction == direction.DOWN) {
-            return true;
+            if (currentFloor > 0) {
+                this.currentFloor = currentFloor - 1;
+                _direction = direction.DOWN;
+                return true;
+            } else {
+                this.currentFloor = currentFloor + 1;
+                _direction = direction.UP;
+                return true;
+            }
         } else {
             System.out.println("Incorrect Input");
             return false;
@@ -16,10 +34,12 @@ public class ExpressElevator extends Elevator {
     public ExpressElevator() {
         this.elevatorID = 0;
         this.elevatorType = "EXPRESS";
+        this.currentFloor = 0;
     }
 
     public ExpressElevator(int _elevatorID) {
         this.elevatorID = _elevatorID;
         this.elevatorType = "EXPRESS";
+        this.currentFloor = 0;
     }
 }
