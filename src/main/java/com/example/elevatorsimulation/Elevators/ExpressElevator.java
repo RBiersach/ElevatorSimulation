@@ -6,7 +6,7 @@ public class ExpressElevator extends Elevator {
 
     public boolean move(SimulationSettings _sm) {
         if (_direction == direction.UP) {
-            if (currentFloor < _sm.getFloors()) {
+            if (currentFloor < _sm.getNumber_of_floors()) {
                 this.currentFloor = currentFloor + 1;
                 _direction = direction.UP;
                 return true;
@@ -25,6 +25,8 @@ public class ExpressElevator extends Elevator {
                 _direction = direction.UP;
                 return true;
             }
+        } else if (_direction == direction.IDLE) {
+            return true;
         } else {
             System.out.println("Incorrect Input");
             return false;

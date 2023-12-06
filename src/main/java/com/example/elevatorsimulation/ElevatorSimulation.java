@@ -3,38 +3,30 @@ package com.example.elevatorsimulation;
 import java.util.Random;
 
 public class ElevatorSimulation {
-    SimulationSettings sm = new SimulationSettings();
+    SimulationSettings sm;
+    Building building;
 
-    public boolean initSimulaton(SimulationSettings _sm) {
+    public ElevatorSimulation(SimulationSettings _sm) {
         this.sm = _sm;
+        this.building = new Building(_sm);
+    }
+
+    public boolean initSimulaton() {
+//        for (int i = 0; i < building.Passengers.size(); i++) {
+//            for (int j = 0; j < building.Floors.size(); j++) {
+//                if (building.Passengers.get(i).getStartingFloor() == building.Floors.get(j).floorID) {
+//                    building.Floors.get(j).waitQueue.add(building.Passengers.get(i));
+//                }
+//            }
+//        }
         return true;
     }
 
-    public boolean runSimulation(SimulationSettings _sm) {
-        Random r = new Random();
-        int r1 = r.nextInt(0, 100);
-        int sum = 0;
-        // for (int i = 0; i < _sm.passenger_request_percentage.size(); i++)
-        {
-            if (r1 >= sum && r1 < sum + _sm.passenger_request_percentage.get(0).percentage) {
-
-            }
-            sum += _sm.passenger_request_percentage.get(0).percentage;
-            if (r1 >= sum && r1 < sum + _sm.passenger_request_percentage.get(1).percentage) {
-
-            }
-            sum += _sm.passenger_request_percentage.get(1).percentage;
-            if (r1 >= sum && r1 < sum + _sm.passenger_request_percentage.get(2).percentage) {
-
-            }
-            sum += _sm.passenger_request_percentage.get(2).percentage;
-            if (r1 >= sum && r1 < sum + _sm.passenger_request_percentage.get(3).percentage) {
-
-            }
-
-        }
+    public boolean runSimulation() {
+        building.scanFloors();
         return true;
     }
+
 
     @Override
     public String toString() {

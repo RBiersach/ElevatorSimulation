@@ -12,13 +12,13 @@ public class FreightPassenger extends Passenger {
 
     public FreightPassenger() {
         this.passengerID = 0;
-        this.startFloor = 0;
-        this.endFloor = 0;
+        this.startingFloor = 0;
+        this.destinationFloor = 0;
     }
 
     public FreightPassenger(int _passengerID, int _startFloor, int _endFloor) {
         this.passengerID = _passengerID;
-        this.startFloor = _startFloor;
-        this.endFloor = _endFloor;
+        this.startingFloor = _startFloor;
+        this.destinationFloor = _endFloor;
     }
 }

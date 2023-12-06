@@ -1,56 +1,44 @@
 package com.example.elevatorsimulation;
 
-import java.lang.reflect.Array;
+import com.example.elevatorsimulation.Elevators.Elevator;
+import com.example.elevatorsimulation.Passengers.Passenger;
+
 import java.util.ArrayList;
 
 public class SimulationSettings {
-    int floors;
-    public ArrayList<AddPassenger> add_passenger = new ArrayList<>();
-    public ArrayList<AddElevator> add_elevator = new ArrayList<>();
+    public int number_of_elevators;
+    int number_of_floors;
+    public ArrayList<ElevatorInformation> elevatorInformationArrayList = new ArrayList<>();
+    public ArrayList<PassengerInformation> passengerInformationArrayList = new ArrayList<>();
     public ArrayList<PassengerRequestPercentage> passenger_request_percentage = new ArrayList<>();
     public ArrayList<ElevatorRequestPercentage> elevator_request_percentage = new ArrayList<>();
 
-    public int number_of_elevators;
 
     //How many iterations
-    public int run_simulation;
+    public int iterations;
+
 
     @Override
     public String toString() {
         String out = "";
-        out += floors;
-        out += " " + add_passenger.size();
-        out += " " + add_elevator.size();
+        out += number_of_floors;
+        out += " " + passengerInformationArrayList.size();
+        out += " " + elevatorInformationArrayList.size();
         out += " " + passenger_request_percentage.size();
         out += " " + elevator_request_percentage.size();
         out += " " + number_of_elevators;
-        out += " " + run_simulation;
+        out += " " + iterations;
         return out;
     }
 
-    public int getFloors() {
-        return floors;
+    public int getNumber_of_floors() {
+        return number_of_floors;
     }
 
-    public void setFloors(int floors) {
-        this.floors = floors;
+    public void setNumber_of_floors(int number_of_floors) {
+        this.number_of_floors = number_of_floors;
     }
 
-    public ArrayList<AddPassenger> getAdd_passenger() {
-        return add_passenger;
-    }
-
-    public void setAdd_passenger(ArrayList<AddPassenger> add_passenger) {
-        this.add_passenger = add_passenger;
-    }
-
-    public ArrayList<AddElevator> getAdd_elevator() {
-        return add_elevator;
-    }
-
-    public void setAdd_elevator(ArrayList<AddElevator> add_elevator) {
-        this.add_elevator = add_elevator;
-    }
 
     public ArrayList<PassengerRequestPercentage> getPassenger_request_percentage() {
         return passenger_request_percentage;
@@ -72,15 +60,11 @@ public class SimulationSettings {
         return number_of_elevators;
     }
 
-    public void setNumber_of_elevators(int number_of_elevators) {
-        this.number_of_elevators = number_of_elevators;
+    public int getIterations() {
+        return iterations;
     }
 
-    public int getRun_simulation() {
-        return run_simulation;
-    }
-
-    public void setRun_simulation(int run_simulation) {
-        this.run_simulation = run_simulation;
+    public void setIterations(int run_simulation) {
+        this.iterations = run_simulation;
     }
 }

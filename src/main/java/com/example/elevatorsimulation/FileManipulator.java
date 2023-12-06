@@ -1,7 +1,14 @@
 package com.example.elevatorsimulation;
 
+import com.example.elevatorsimulation.Elevators.*;
+import com.example.elevatorsimulation.Passengers.Passenger;
+import com.example.elevatorsimulation.Passengers.StandardPassenger;
+import com.example.elevatorsimulation.Passengers.FreightPassenger;
+import com.example.elevatorsimulation.Passengers.GlassPassenger;
+import com.example.elevatorsimulation.Passengers.VipPassenger;
+
+
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -30,20 +37,23 @@ public class FileManipulator {
             while (line != null) {
                 String[] lineData = line.split(" ");
                 if (lineData[0].equals("floors")) {
-                    sm.floors = Integer.parseInt(lineData[1]);
+                    sm.number_of_floors = Integer.parseInt(lineData[1]);
                 } else if (lineData[0].equals("add_passenger")) {
-                    AddPassenger passenger = new AddPassenger();
-                    passenger.startingFloor = Integer.parseInt(lineData[2]);
-                    passenger.destinationFloor = Integer.parseInt(lineData[3]);
-                    passenger.passengerType = lineData[4];
-                    passenger.passengerRequestPercentage = Integer.parseInt(lineData[5]);
-                    sm.add_passenger.add(passenger);
+                    PassengerInformation passengerInformation = new PassengerInformation();
+                    passengerInformation.startingFloor = Integer.parseInt(lineData[2]);
+                    passengerInformation.destinationFloor = Integer.parseInt(lineData[3]);
+                    passengerInformation.typeOfPassenger = lineData[4];
+                    passengerInformation.passengerRequestPercentage = Integer.parseInt(lineData[5]);
+                    sm.passengerInformationArrayList.add(passengerInformation);
+
                 } else if (lineData[0].equals("elevator_type")) {
-                    AddElevator elevator = new AddElevator();
-                    elevator.elevatorType = lineData[1];
-                    elevator.maximumCapacity = Integer.parseInt(lineData[2]);
-                    elevator.elevatorRequestPercentage = Integer.parseInt(lineData[3]);
-                    sm.add_elevator.add(elevator);
+                    ElevatorInformation elevatorInformation = new ElevatorInformation();
+                    elevatorInformation.elevatorType = lineData[1];
+                    elevatorInformation.maximumCapacity = Integer.parseInt(lineData[2]);
+                    elevatorInformation.elevatorRequestPercentage = Integer.parseInt(lineData[3]);
+                    sm.elevatorInformationArrayList.add(elevatorInformation);
+
+
                 } else if (lineData[0].equals("request_percentage")) {
                     ElevatorRequestPercentage erp = new ElevatorRequestPercentage();
                     erp.elevatorType = lineData[1];
@@ -57,7 +67,7 @@ public class FileManipulator {
                 } else if (lineData[0].equals("number_of_elevators")) {
                     sm.number_of_elevators = Integer.parseInt(lineData[1]);
                 } else if (lineData[0].equals("run_simulation")) {
-                    sm.run_simulation = Integer.parseInt(lineData[1]);
+                    sm.iterations = Integer.parseInt(lineData[1]);
                 }
                 line = br.readLine();
             }

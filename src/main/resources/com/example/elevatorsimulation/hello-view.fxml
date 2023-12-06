@@ -9,19 +9,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 
-<BorderPane prefHeight="400.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elevatorsimulation.HelloController">
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elevatorsimulation.HelloController">
    <top>
-      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" style="-fx-border-color: #000000; -fx-background-color: ADADAD;" BorderPane.alignment="CENTER">
          <children>
              <Button onAction="#onHelloButtonClick" text="Start Simulation" />
          </children>
       </HBox>
    </top>
    <center>
-      <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="scrollPane" vbarPolicy="ALWAYS">
          <content>
-            <GridPane fx:id="gridContainer" prefHeight="0.0" prefWidth="0.0" style="-fx-border-color: #000000;">
+            <GridPane fx:id="gridContainer" style="-fx-border-color: #000000;">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -33,17 +34,53 @@
       </ScrollPane>
    </center>
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: #000000;" BorderPane.alignment="CENTER">
          <children>
             <Label text="Simulation Statistics:" />
+            <HBox>
+               <children>
+                  <Label text="Current Iteration: " />
+                  <Label fx:id="iterationLabel" text="0" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </left>
    <bottom>
-      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: #000000;" BorderPane.alignment="CENTER">
          <children>
             <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Created by: Robert Biersach and Neha Mariya Saji." HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
    </bottom>
+   <right>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Standard: " />
+                  <Circle fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Express:    " />
+                  <Circle fill="BLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Freight:   " />
+                  <Circle fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Glass:      " />
+                  <Circle radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </right>
 </BorderPane>

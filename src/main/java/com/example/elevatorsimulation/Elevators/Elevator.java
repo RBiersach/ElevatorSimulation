@@ -6,13 +6,27 @@ import com.example.elevatorsimulation.SimulationSettings;
 import java.util.ArrayList;
 
 public abstract class Elevator {
-    protected int elevatorID;
-    protected String elevatorType;
-    protected int currentFloor;
-    protected int targetFloor;
-    protected direction _direction;
+    public int elevatorID;
+    public String elevatorType;
+    public int currentFloor;
+    public int targetFloor;
+    public direction _direction;
+    public int maximumCapacity;
+    public int elevatorRequestPercentage;
     SimulationSettings sm = new SimulationSettings();
-    ArrayList<Passenger> passengers = new ArrayList<Passenger>();
+    public ArrayList<Passenger> passengers = new ArrayList<Passenger>();
+
+//    public Elevator(Elevator elevator) {
+//        this.elevatorID = elevator.elevatorID;
+//        this.elevatorType = elevator.elevatorType;
+//        this.currentFloor = elevator.currentFloor;
+//        this.targetFloor = elevator.targetFloor;
+//        this._direction = elevator._direction;
+//        this.maximumCapacity = elevator.maximumCapacity;
+//        this.elevatorRequestPercentage = elevator.elevatorRequestPercentage;
+//        this.sm = elevator.sm;
+//        this.passengers = elevator.passengers;
+//    }
 
     public abstract boolean move(SimulationSettings _sm);
 
@@ -23,7 +37,7 @@ public abstract class Elevator {
     public ArrayList<Passenger> getPassengers(int currentFloor) {
         ArrayList<Passenger> temp = new ArrayList<>();
         for (int i = 0; i < this.passengers.size(); i++) {
-            if (this.passengers.get(i).getEndFloor() == currentFloor) {
+            if (this.passengers.get(i).getDestinationFloor() == currentFloor) {
                 temp.add(this.passengers.get(i));
             }
         }
