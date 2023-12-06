@@ -8,7 +8,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -36,26 +35,18 @@ public class HelloController {
 
         int BOX_SIZE = 60;
         for (int row = sm.number_of_floors; row > 0; row--) {
-            for (int col = sm.number_of_elevators; col > 0; col--) {
+            for (int col = 0; col < sm.number_of_elevators; col++) {
                 Rectangle rectangle = new Rectangle(BOX_SIZE, 15, Color.WHITE);
                 rectangle.setStroke(Color.BLACK);
                 gridContainer.add(rectangle, col, row);
             }
         }
-//        for (int row = 0; row < sm.number_of_floors; row++) {
-//            for (int col = 0; col < sm.number_of_elevators; col++) {
-//                Rectangle rectangle = new Rectangle(BOX_SIZE, 15, Color.WHITE);
-//                rectangle.setStroke(Color.BLACK);
-//                gridContainer.add(rectangle, col, row);
-//            }
-//        }
     }
 
     @FXML
     protected void onHelloButtonClick() throws IOException {
 
         ElevatorSimulation simulation = new ElevatorSimulation(sm);
-        simulation.initSimulaton();
 
         int[] loopCounter = {1};
         final int maxIteration = sm.iterations;
@@ -63,9 +54,11 @@ public class HelloController {
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(250), event -> {
             if (loopCounter[0] <= maxIteration) {
                 // Perform actions here for each iteration
-//                System.out.println("Iteration: " + loopCounter[0]);
+
+                //Updates Iteration Counter
                 iterationLabel.setText("" + loopCounter[0]);
 
+                //Sets all Grid boxes back to white
                 for (int row = 0; row < simulation.building.Floors.size(); row++) {
                     for (int col = 0; col < simulation.building.Elevators.size(); col++) {
                         Rectangle rectangle = (Rectangle) gridContainer.getChildren().get(row * simulation.building.Elevators.size() + col);
@@ -73,7 +66,7 @@ public class HelloController {
                         rectangle.setFill(Color.WHITE);
                     }
                 }
-
+                //Sets the selected Grid boxes to corresponding color of elevators
                 for (int i = 0; i < simulation.building.Elevators.size(); i++) {
                     int selectedRow = simulation.building.Elevators.get(i).getCurrentFloor();
                     //int selectedRow = (int) (Math.random() * 30);
@@ -86,17 +79,17 @@ public class HelloController {
                     } else if (simulation.building.Elevators.get(i).elevatorType.equals("FreightElevator")) {
                         elevatorRectangle.setFill(Color.RED);
                     } else if (simulation.building.Elevators.get(i).elevatorType.equals("GlassElevator")) {
-                        elevatorRectangle.setFill(Color.BLACK);
+                        elevatorRectangle.setFill(Color.YELLOW);
                     } else {
                         elevatorRectangle.setFill(Color.ORANGE);
                     }
                 }
-
-//                for (int k = 0; k < simulation.building.Elevators.size(); k++) {
+                //Calls Scan method
                 simulation.building.scanFloors();
-//                }
+                //Updates iteration counter
                 loopCounter[0]++;
             } else {
+                //Once iteration count = max iterations, break out of loop
                 timeline.stop();
             }
         }));

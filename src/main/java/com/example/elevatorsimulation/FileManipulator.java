@@ -1,13 +1,5 @@
 package com.example.elevatorsimulation;
 
-import com.example.elevatorsimulation.Elevators.*;
-import com.example.elevatorsimulation.Passengers.Passenger;
-import com.example.elevatorsimulation.Passengers.StandardPassenger;
-import com.example.elevatorsimulation.Passengers.FreightPassenger;
-import com.example.elevatorsimulation.Passengers.GlassPassenger;
-import com.example.elevatorsimulation.Passengers.VipPassenger;
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

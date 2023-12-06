@@ -17,9 +17,6 @@ public class Building {
     ArrayList<Passenger> completedQueue = new ArrayList<>();
 
     public boolean scanFloors() {
-//        for (int i = 0; i < Floors.size(); i++) {
-//            Floors.get(i).loadAndUnload();
-//        }
         for (int i = 0; i < Elevators.size(); i++) {
             if (Elevators.get(i).passengers.isEmpty()) {
                 if ((!(standardWaitQueue.size() == 0)) && Elevators.get(i).elevatorType.equals("StandardElevator")) {
@@ -30,10 +27,13 @@ public class Building {
                         Elevators.get(i)._direction = (direction.DOWN);
 
                     } else if (standardWaitQueue.get(0).getStartingFloor() == Elevators.get(i).currentFloor) {
-                        Elevators.get(i).passengers.add(standardWaitQueue.get(0));
+
+                        if (standardWaitQueue.get(0).getStartingFloor() == Elevators.get(i).currentFloor && Elevators.get(i).maximumCapacity > Elevators.get(i).passengers.size())
+                            Elevators.get(i).passengers.add(standardWaitQueue.get(0));
                         standardWaitQueue.remove(0);
                         Elevators.get(i)._direction = (direction.IDLE);
                         System.out.println("Elevator: " + (i + 1) + " picked up passenger on floor: " + Elevators.get(i).currentFloor);
+
                     }
                 } else if ((!(expressWaitQueue.size() == 0)) && Elevators.get(i).elevatorType.equals("ExpressElevator")) {
                     if (expressWaitQueue.get(0).getStartingFloor() > Elevators.get(i).currentFloor) {
@@ -81,6 +81,7 @@ public class Building {
                     Elevators.get(i)._direction = direction.IDLE;
                 }
             } else {
+
                 if (Elevators.get(i).passengers.get(0).destinationFloor > Elevators.get(i).getCurrentFloor()) {
                     Elevators.get(i)._direction = (direction.UP);
 

@@ -16,18 +16,6 @@ public abstract class Elevator {
     SimulationSettings sm = new SimulationSettings();
     public ArrayList<Passenger> passengers = new ArrayList<Passenger>();
 
-//    public Elevator(Elevator elevator) {
-//        this.elevatorID = elevator.elevatorID;
-//        this.elevatorType = elevator.elevatorType;
-//        this.currentFloor = elevator.currentFloor;
-//        this.targetFloor = elevator.targetFloor;
-//        this._direction = elevator._direction;
-//        this.maximumCapacity = elevator.maximumCapacity;
-//        this.elevatorRequestPercentage = elevator.elevatorRequestPercentage;
-//        this.sm = elevator.sm;
-//        this.passengers = elevator.passengers;
-//    }
-
     public abstract boolean move(SimulationSettings _sm);
 
     public int getCurrentFloor() {

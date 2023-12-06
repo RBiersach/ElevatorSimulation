@@ -1,7 +1,5 @@
 package com.example.elevatorsimulation;
 
-import java.util.Random;
-
 public class ElevatorSimulation {
     SimulationSettings sm;
     Building building;

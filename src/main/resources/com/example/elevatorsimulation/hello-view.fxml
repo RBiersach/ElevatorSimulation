@@ -56,28 +56,28 @@
    <right>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Label text="Standard: " />
+                  <Label text="Standard:" />
                   <Circle fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Label text="Express:    " />
+                  <Label text="Express:" />
                   <Circle fill="BLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Label text="Freight:   " />
+                  <Label text="Freight:" />
                   <Circle fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Label text="Glass:      " />
-                  <Circle radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="Glass:" />
+                  <Circle fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </HBox>
          </children>
