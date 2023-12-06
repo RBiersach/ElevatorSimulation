@@ -22,7 +22,7 @@ public class Building {
 //        }
         for (int i = 0; i < Elevators.size(); i++) {
             if (Elevators.get(i).passengers.isEmpty()) {
-                if ((!standardWaitQueue.isEmpty()) && Elevators.get(i).elevatorType.equals("StandardElevator")) {
+                if ((!(standardWaitQueue.size() == 0)) && Elevators.get(i).elevatorType.equals("StandardElevator")) {
                     if (standardWaitQueue.get(0).getStartingFloor() > Elevators.get(i).currentFloor) {
                         Elevators.get(i)._direction = (direction.UP);
 
@@ -35,8 +35,7 @@ public class Building {
                         Elevators.get(i)._direction = (direction.IDLE);
                         System.out.println("Elevator: " + (i + 1) + " picked up passenger on floor: " + Elevators.get(i).currentFloor);
                     }
-                }
-                if ((!expressWaitQueue.isEmpty()) && Elevators.get(i).elevatorType.equals("ExpressElevator")) {
+                } else if ((!(expressWaitQueue.size() == 0)) && Elevators.get(i).elevatorType.equals("ExpressElevator")) {
                     if (expressWaitQueue.get(0).getStartingFloor() > Elevators.get(i).currentFloor) {
                         Elevators.get(i)._direction = (direction.UP);
 
@@ -50,8 +49,7 @@ public class Building {
                         System.out.println("Elevator: " + (i + 1) + " picked up passenger on floor: " + Elevators.get(i).currentFloor);
 
                     }
-                }
-                if ((!freightWaitQueue.isEmpty()) && Elevators.get(i).elevatorType.equals("FreightElevator")) {
+                } else if ((!(freightWaitQueue.size() == 0)) && Elevators.get(i).elevatorType.equals("FreightElevator")) {
                     if (freightWaitQueue.get(0).getStartingFloor() > Elevators.get(i).currentFloor) {
                         Elevators.get(i)._direction = (direction.UP);
 
@@ -65,8 +63,7 @@ public class Building {
                         System.out.println("Elevator: " + (i + 1) + " picked up passenger on floor: " + Elevators.get(i).currentFloor);
 
                     }
-                }
-                if ((!glassWaitQueue.isEmpty()) && Elevators.get(i).elevatorType.equals("GlassElevator")) {
+                } else if ((!(glassWaitQueue.size() == 0)) && Elevators.get(i).elevatorType.equals("GlassElevator")) {
                     if (glassWaitQueue.get(0).getStartingFloor() > Elevators.get(i).currentFloor) {
                         Elevators.get(i)._direction = (direction.UP);
 
@@ -80,6 +77,8 @@ public class Building {
                         System.out.println("Elevator: " + (i + 1) + " picked up passenger on floor: " + Elevators.get(i).currentFloor);
 
                     }
+                } else {
+                    Elevators.get(i)._direction = direction.IDLE;
                 }
             } else {
                 if (Elevators.get(i).passengers.get(0).destinationFloor > Elevators.get(i).getCurrentFloor()) {
