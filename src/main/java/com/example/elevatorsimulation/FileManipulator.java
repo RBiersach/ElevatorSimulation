@@ -15,7 +15,7 @@ public class FileManipulator {
     }
 
     public FileManipulator() {
-        this.fileDirectory = "C:\\Users\\thren\\OneDrive\\Desktop\\Farmingdale\\Fall 2023\\CSC 211\\ElevatorSimulation\\src\\main\\resources\\";
+        this.fileDirectory = "src\\main\\resources\\";
 
     }
 

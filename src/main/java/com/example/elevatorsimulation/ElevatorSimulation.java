@@ -10,13 +10,6 @@ public class ElevatorSimulation {
     }
 
     public boolean initSimulaton() {
-//        for (int i = 0; i < building.Passengers.size(); i++) {
-//            for (int j = 0; j < building.Floors.size(); j++) {
-//                if (building.Passengers.get(i).getStartingFloor() == building.Floors.get(j).floorID) {
-//                    building.Floors.get(j).waitQueue.add(building.Passengers.get(i));
-//                }
-//            }
-//        }
         return true;
     }
 
